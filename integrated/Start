@@ -1,0 +1,14 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+dir_path="${0%/*}"
+dirs=`find $dir_path -maxdepth 1 -type d -not -name .`;
+
+for dir in $dirs;
+do
+    
+    cd $dir
+    ./Allrun
+    cd ..
+done
+#------------------------------------------------------------------------------
