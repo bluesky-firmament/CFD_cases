@@ -49,9 +49,9 @@ boundaryLayers
         {
             nLayers           10;
 
-            thicknessRatio    1.2;
+            thicknessRatio    1.02;
 
-            maxFirstLayerThickness 0.1;
+            maxFirstLayerThickness 0.0001;
 
             allowDiscontinuity 0;
         }
