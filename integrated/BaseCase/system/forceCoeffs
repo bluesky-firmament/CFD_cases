@@ -20,8 +20,8 @@ forceCoeffs1
     patches         (rocket);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Redundant for incompressible
-    liftDir         (0 0 1);
-    dragDir         (1 0 0);
+    liftDir         (0 1 0);
+    dragDir         (0 0 1);
     CofR            (0.72 0 0);  // Axle midpoint on ground
     pitchAxis       (0 1 0);
     magUInf         20;

@@ -25,17 +25,7 @@ boundaryCellSize 0.1;
 
 minCellSize 3;
 
-anisotropicSources
-{
-     Plane 
-    {
-        type plane;
-        origin (0 0 -20);
-	normal (0 0 1);
-	scalingDistance 45;
-        scalingFactor 2;
-    }
-}
+
 
 localRefinement
 {

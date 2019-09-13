@@ -23,8 +23,11 @@ function resetCounters() {
     contLocalCnt=0
     executionTimeCnt=0
     kCnt=0
+    kAvgCnt=0
     kFinalResCnt=0
     kItersCnt=0
+    kMaxCnt=0
+    kMinCnt=0
     omegaCnt=0
     omegaFinalResCnt=0
     omegaItersCnt=0
@@ -141,5 +144,29 @@ function extract(inLine,columnSel,outVar,a,b)
     file="./logs/executionTime_" executionTimeCnt
     print Time "	" val[1] > file
     executionTimeCnt++
+}
+
+# Extraction of kAvg
+/bounding k,/ {
+    extract($0, "average: ", val)
+    file="./logs/kAvg_" kAvgCnt
+    print Time "	" val[1] > file
+    kAvgCnt++
+}
+
+# Extraction of kMax
+/bounding k,/ {
+    extract($0, "max: ", val)
+    file="./logs/kMax_" kMaxCnt
+    print Time "	" val[1] > file
+    kMaxCnt++
+}
+
+# Extraction of kMin
+/bounding k,/ {
+    extract($0, "min: ", val)
+    file="./logs/kMin_" kMinCnt
+    print Time "	" val[1] > file
+    kMinCnt++
 }
 
