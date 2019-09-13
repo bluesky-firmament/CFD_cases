@@ -47,7 +47,7 @@ boundaryLayers
     {
         "modelrocket.*"
         {
-            nLayers           5;
+            nLayers           10;
 
             thicknessRatio    1.2;
 
