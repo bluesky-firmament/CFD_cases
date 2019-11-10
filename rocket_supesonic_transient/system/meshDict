@@ -1,0 +1,101 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          | 
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         | 
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "rocket_box.stl";
+
+maxCellSize 500.0;
+
+boundaryCellSize 1.0;
+
+minCellSize 0.5;
+
+anisotropicSources
+{
+    Plane 
+    {
+        type plane;
+        origin (0 0 -20);
+	normal (0 0 1);
+	scalingDistance 45;
+        scalingFactor 2;
+    }
+}
+
+localRefinement
+{
+    "modelrocket.*"
+    {
+        cellSize 0.0005;
+    } 
+}
+
+boundaryLayers
+{
+  //nLayers 15;
+
+   //thicknessRatio 1.2;
+
+  //maxFirstLayerThickness 0.5;
+
+    patchBoundaryLayers
+    {
+        "modelrocket.*"
+        {
+            nLayers           1;
+
+            thicknessRatio    1.2;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+        }
+
+
+    }
+}
+
+renameBoundary
+{
+    defaultName		fixedWalls;
+    defaultType		wall;
+
+    newPatchNames
+    {
+        "modelrocket.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+ 
+        "zMax.*"
+        {
+            newName     inlet;
+            type     patch;
+        }
+
+        "zMin.*"
+        {
+            newName     outlet;
+            type     patch;
+        }
+    }
+}
+               
+     
+// ************************************************************************* //

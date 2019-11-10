@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant/polyMesh";
+    object      meshMetaDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile     "rocket_box.stl";
+
+surfaceMeta
+{
+    nPoints         1473;
+    nFacets         2938;
+    nPatches        7;
+    nFeatureEdges   0;
+    patches
+    {
+        modelrocket
+        {
+            type            empty;
+            nFacets         2926;
+        }
+        xMin
+        {
+            type            empty;
+            nFacets         2;
+        }
+        xMax
+        {
+            type            empty;
+            nFacets         2;
+        }
+        yMin
+        {
+            type            empty;
+            nFacets         2;
+        }
+        yMax
+        {
+            type            empty;
+            nFacets         2;
+        }
+        zMin
+        {
+            type            empty;
+            nFacets         2;
+        }
+        zMax
+        {
+            type            empty;
+            nFacets         2;
+        }
+    }
+    pointSubsets
+    {
+    }
+    facetSubsets
+    {
+    }
+    featureEdgeSubsets
+    {
+    }
+}

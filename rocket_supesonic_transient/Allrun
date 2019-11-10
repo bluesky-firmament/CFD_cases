@@ -1,0 +1,16 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+surfaceGenerateBoundingBox rocket.stl rocket_box.stl 1 1 1 1 15 5
+runApplication cartesianMesh
+runApplication checkMesh -constant
+runApplication decomposePar
+runParallel $(getApplication)
+
+runApplication reconstructParMesh -constant
+runApplication reconstructPar -latestTime
+runApplication foamLog log.rhoPimpleFoam
+#------------------------------------------------------------------------------
