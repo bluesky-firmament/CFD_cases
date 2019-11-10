@@ -1,0 +1,286 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                |
+| \\      /  F ield         | cfMesh: A library for mesh generation          | 
+|  \\    /   O peration     |                                                |
+|   \\  /    A nd           | Author: Franjo Juretic                         | 
+|    \\/     M anipulation  | E-mail: franjo.juretic@c-fields.com            |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version   2.0;
+    format    ascii;
+    class     dictionary;
+    location  "system";
+    object    meshDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaceFile "vortex_generator_rocket_box.stl";
+
+maxCellSize 1;
+
+boundaryCellSize 0.1;
+
+minCellSize 0.01;
+
+anisotropicSources
+{
+    Plane 
+    {
+        type plane;
+        origin (0 0 -20);
+	normal (0 0 1);
+	scalingDistance 45;
+        scalingFactor 2;
+    }
+}
+
+localRefinement
+{
+    "nose.*"
+    {
+        cellSize 0.002;
+    } 
+    "bodytube.*"
+    {
+        cellSize 0.025;
+    }
+    "fin-1.*"
+    {
+        cellSize 0.002;
+    }
+    "fin-2.*"
+    {
+        cellSize 0.002;
+    }
+    "fin-3.*"
+    {
+        cellSize 0.002;
+    }
+    "fin-4.*"
+    {
+        cellSize 0.002;
+    }
+    "VG-1.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-2.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-3.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-4.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-5.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-6.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-7.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-8.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-9.*"
+    {
+        cellSize 0.0005;
+    }
+    "VG-10.*"
+    {
+        cellSize 0.0005;
+    }
+}
+
+boundaryLayers
+{
+  //nLayers 15;
+
+   //thicknessRatio 1.2;
+
+  //maxFirstLayerThickness 0.5;
+
+    patchBoundaryLayers
+    {
+    "nose.*"
+    {
+            nLayers           5;
+
+            thicknessRatio    1.025;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+    } 
+    "bodytube.*"
+    {
+            nLayers           5;
+
+            thicknessRatio    1.025;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+    }
+    "fin-1.*"
+    {
+            nLayers           5;
+
+            thicknessRatio    1.025;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+    }
+    "fin-2.*"
+    {
+            nLayers           5;
+
+            thicknessRatio    1.025;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+    }
+    "fin-3.*"
+    {
+            nLayers           5;
+
+            thicknessRatio    1.025;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+    }
+    "fin-4.*"
+    {
+            nLayers           5;
+
+            thicknessRatio    1.025;
+
+            maxFirstLayerThickness 0.1;
+
+            allowDiscontinuity 0;
+    }
+
+    }
+}
+
+renameBoundary
+{
+    defaultName		fixedWalls;
+    defaultType		wall;
+
+    newPatchNames
+    {
+        "nose.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "bodytube.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "fin-1.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "fin-2.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "fin-3.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "fin-4.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-1.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-2.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-3.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-4.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-5.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-6.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-7.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-8.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-9.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+        "VG-10.*"
+        {
+            newName	rocket;
+	    type     wall;
+        }
+
+ 
+        "yMax.*"
+        {
+            newName     inlet;
+            type     patch;
+        }
+
+        "yMin.*"
+        {
+            newName     outlet;
+            type     patch;
+        }
+    }
+}
+               
+     
+// ************************************************************************* //
